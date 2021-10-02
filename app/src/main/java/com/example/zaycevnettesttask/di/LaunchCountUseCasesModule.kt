@@ -3,6 +3,7 @@ package com.example.zaycevnettesttask.di
 import com.example.zaycevnettesttask.domain.repository.ILaunchCountRepository
 import com.example.zaycevnettesttask.domain.usecases.GetLaunchCountUseCase
 import com.example.zaycevnettesttask.domain.usecases.IncLaunchCountUseCase
+import com.example.zaycevnettesttask.domain.usecases.ToastSingleShowControlUseCase
 import dagger.Module
 import dagger.Provides
 
@@ -16,5 +17,12 @@ class LaunchCountUseCasesModule {
     @Provides
     fun provideGetLaunchCountUseCase(repository: ILaunchCountRepository): GetLaunchCountUseCase {
         return GetLaunchCountUseCase(repository)
+    }
+
+    @Provides
+    fun provideToastSingleShowControlUseCase(
+        repository: ILaunchCountRepository
+    ): ToastSingleShowControlUseCase {
+        return ToastSingleShowControlUseCase(repository)
     }
 }
