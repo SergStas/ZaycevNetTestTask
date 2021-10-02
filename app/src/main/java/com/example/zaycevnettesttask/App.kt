@@ -1,8 +1,9 @@
 package com.example.zaycevnettesttask
 
 import android.app.Application
-import com.example.zaycevnettesttask.domain.di.AppComponent
-import com.example.zaycevnettesttask.domain.di.DaggerAppComponent
+import com.example.zaycevnettesttask.di.AppComponent
+import com.example.zaycevnettesttask.di.AppModule
+import com.example.zaycevnettesttask.di.DaggerAppComponent
 
 class App: Application() {
     companion object {
@@ -13,10 +14,18 @@ class App: Application() {
         super.onCreate()
 
         initDagger()
+
+        incLaunchCount()
     }
 
     private fun initDagger() {
-        appComponent = DaggerAppComponent.builder().build()
+        appComponent = DaggerAppComponent.builder()
+            .appModule(AppModule(this))
+            .build()
         appComponent.inject(this)
+    }
+
+    private fun incLaunchCount() {
+        appComponent.getIncLaunchCountUseCase().execute()
     }
 }

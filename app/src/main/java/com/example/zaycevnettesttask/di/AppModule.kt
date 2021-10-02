@@ -1,12 +1,13 @@
-package com.example.zaycevnettesttask.domain.di
+package com.example.zaycevnettesttask.di
 
 import android.app.Application
 import dagger.Module
 import dagger.Provides
+import javax.inject.Inject
 
 @Module
 class AppModule(private val application: Application) {
-    @Provides fun provideApplication(application: Application): Application {
+    @Provides fun provideApplication(): Application {
         return application
     }
 }
