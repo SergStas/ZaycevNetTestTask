@@ -9,9 +9,9 @@ class Employee {
     private Vacancy vacancy;
 
     // В классе отсутствовал конструктор
-    public Employee(long id, Vacancy vacancy) {
+    public Employee(long id, String vacancyName) {
         this.id = id;
-        this.vacancy = vacancy
+        this.vacancy = new Vacancy(vacancyName);
     }
 
     String getVacancy() {
