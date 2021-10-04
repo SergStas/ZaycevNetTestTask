@@ -14,7 +14,7 @@ class LaunchCountSharedPreferencesRepository(
     }
 
     override fun increment(): Boolean {
-        val oldValue = sharedPreferences.getInt(launchCountTag, -1)
+        val oldValue = sharedPreferences.getInt(launchCountTag, 0)
         sharedPreferences.edit().putInt(launchCountTag, oldValue + 1).apply()
 
         updateFirstShowState(true)
